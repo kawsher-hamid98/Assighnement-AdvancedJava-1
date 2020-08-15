@@ -86,4 +86,104 @@ public class Movie {
 	private String website;
 	@JsonProperty("Response")
 	private String response;
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public String getRated() {
+		return rated;
+	}
+
+	public String getReleased() {
+		return released;
+	}
+
+	public String getRuntime() {
+		return runtime;
+	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public String getDirector() {
+		return director;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public String getActors() {
+		return actors;
+	}
+
+	public String getPlot() {
+		return plot;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public String getAwards() {
+		return awards;
+	}
+
+	public String getPoster() {
+		return poster;
+	}
+
+	public List<Rating> getRatings() {
+		return ratings;
+	}
+
+	public Integer getMetascore() {
+		return metascore;
+	}
+
+	public Double getImdbRating() {
+		return imdbRating;
+	}
+
+	public String getImdbVotes() {
+		return imdbVotes;
+	}
+
+	public String getImdbID() {
+		return imdbID;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public String getdVD() {
+		return dVD;
+	}
+
+	public String getBoxOffice() {
+		return boxOffice;
+	}
+
+	public String getProduction() {
+		return production;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public String getResponse() {
+		return response;
+	}
 }

@@ -47,16 +47,15 @@ class FileProcessorTest {
 	@Test
 	void testReadFileFrom() {
 		System.out.println(readFrom.getPath());
-		var lines = fileProcessor.readFileFrom(readFrom.getPath());
-
+		var lines = FileProcessor.readFileFrom(readFrom.getPath());
 		assertEquals(lines.size(), 9);
 	}
 
 	@Test
 	void testWriteToFile() {
-		var lines = fileProcessor.readFileFrom(readFrom.getPath());
+		var lines = FileProcessor.readFileFrom(readFrom.getPath());
 		fileProcessor.writeToFile(lines, writeTo.getPath());
-		var writtenLine = fileProcessor.readFileFrom(writeTo.getPath());
+		var writtenLine = FileProcessor.readFileFrom(writeTo.getPath());
 
 		assertEquals(writtenLine.size(), lines.size());
 	}

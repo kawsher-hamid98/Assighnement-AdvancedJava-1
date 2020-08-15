@@ -116,13 +116,14 @@ class RealMovieServiceTest {
 	}
 
 	@Test
-	void findFirstMovieTitleWithImdbRatingEqualOrGreater() {
-		var movie = realMovieService.findFirstMovieTitleWithImdbRatingEqualOrGreater(7);
+	 void findFirstMovieTitleWithImdbRatingEqualOrGreater() {
+		var movie = RealMovieService.findFirstMovieTitleWithImdbRatingEqualOrGreater(7);
 
 		assertTrue(movie.isPresent());
+		System.out.println(movie.get());
 		assertThat(movie.get(), is("Going My Way"));
 
-		assertFalse(realMovieService.findFirstMovieTitleWithImdbRatingEqualOrGreater(10).isPresent());
+		assertFalse(RealMovieService.findFirstMovieTitleWithImdbRatingEqualOrGreater(10).isPresent());
 	}
 
 	@Test
@@ -158,8 +159,7 @@ class RealMovieServiceTest {
 
 	}
 
-
-	private Map<String, String> getMoviesByYearImperatively() {
+	private static Map<String, String> getMoviesByYearImperatively() {
 		var allMovies = InMemoryMovieService.getInstance().findAllMovies();
 		Map<String, String> map = new HashMap<>();
 		for (Movie allMovie : allMovies) {

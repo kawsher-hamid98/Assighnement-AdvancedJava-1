@@ -22,9 +22,10 @@
 
 package com.masterdevskills.cha1.ext3;
 
-
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 /**
  * @author A N M Bazlur Rahman @bazlur_rahman
@@ -41,7 +42,9 @@ public class Exercises {
 	 * @see List#replaceAll(UnaryOperator)
 	 */
 	public static List<Integer> doubling(List<Integer> ints) {
-		throw new RuntimeException("NotYetImplemented");
+		return ints.stream()
+				.map(integer -> integer * 2)
+				.collect(Collectors.toList());
 	}
 
 	/**
@@ -52,7 +55,9 @@ public class Exercises {
 	 * @see List#replaceAll(UnaryOperator)
 	 */
 	public static List<String> addSuffix(List<String> items, String suffix) {
-		throw new RuntimeException("NotYetImplemented");
+		return items.stream()
+				.map(s -> s += suffix)
+				.collect(Collectors.toList());
 	}
 
 	/***
@@ -61,7 +66,9 @@ public class Exercises {
 	 * @param people list of person
 	 * */
 	public static List<Person> sortItemByFirstNameOrderAscending(List<Person> people) {
-		throw new RuntimeException("NotYetImplemented");
+		return people.stream()
+				.sorted(Comparator.comparing(Person::getFirstName))
+				.collect(Collectors.toList());
 	}
 
 	/**
@@ -70,7 +77,9 @@ public class Exercises {
 	 * @param people list of person
 	 */
 	public static List<Person> sortByLastNameOrderDescending(List<Person> people) {
-		throw new RuntimeException("NotYetImplemented");
+		return people.stream()
+				.sorted(Comparator.comparing(Person::getLastName).reversed())
+				.collect(Collectors.toList());
 	}
 
 	/**
@@ -80,7 +89,18 @@ public class Exercises {
 	 *
 	 * @param people list of person
 	 */
+
 	public static List<Person> sortByFirstNameAndThenLastNameAndThenAge(List<Person> people) {
-		throw new RuntimeException("NotYetImplemented");
+		return people.stream()
+				.sorted((o1, o2) -> {
+					if (o1.getFirstName().equalsIgnoreCase(o2.getFirstName())) {
+						return o1.getLastName().compareTo(o2.getLastName());
+					} else if (o1.getFirstName().equalsIgnoreCase(o2.getLastName()) || o1.getLastName().equalsIgnoreCase(o2.getFirstName())) {
+						return o1.getAge() - o2.getAge();
+					} else {
+						return o1.getFirstName().compareTo(o2.getFirstName());
+					}
+				})
+				.collect(Collectors.toList());
 	}
 }

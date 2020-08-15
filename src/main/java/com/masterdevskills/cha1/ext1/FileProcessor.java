@@ -22,6 +22,12 @@
 
 package com.masterdevskills.cha1.ext1;
 
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -44,23 +50,39 @@ public class FileProcessor {
      *                 hints:
      * @see List#removeIf(Predicate)
      */
-    public List<String> readFileFrom(String fileName) {
 
-        throw new RuntimeException("Not Yet Implemented");
+    public static List<String> readFileFrom(String fileName) {
+        List<String> stringList = new ArrayList<>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            String line;
+            while ((line = reader.readLine()) != null ) {
+                if (line.length() > 0) stringList.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return stringList;
     }
 
-    /**
-     * TODO: Implement this method that takes a list of string and write in a file
-     *
-     * @param lines    list of string
-     * @param fileName fileName to write
-     *                 <p>
-     *                 hints
-     * @see String#join(CharSequence, CharSequence...)
-     */
-    public void writeToFile(List<String> lines, String fileName) {
 
-        throw new RuntimeException("Not Yet Implemented");
+    public static void main(String[] args) {
+        writeToFile(Arrays.asList("apple", "ordewdewange") , "/home/tanvir/Documents/assighnments/assighnmenmts1/advancejava-exercise/src/main/java/com/masterdevskills/cha1/ext1/ok.txt");
+    }
+    public static void writeToFile(List<String> lines, String fileName) {
+        try {
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
+            lines.forEach(s -> {
+                        try {
+                            bufferedWriter.write(s + "\n");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

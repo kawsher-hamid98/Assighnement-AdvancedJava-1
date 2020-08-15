@@ -6,7 +6,7 @@ public class DidThatWork {
 
         logger.enableLogging();
         User user = new User("Bazlur", "Rahman");
-        // logger.info("user status:  {}", getUserStatus(user));
+//         logger.info("user status:  {}", getUserStatus(user));
         logger.info("user status:  {}", () -> new String[]{getUserStatus(user)});
     }
 

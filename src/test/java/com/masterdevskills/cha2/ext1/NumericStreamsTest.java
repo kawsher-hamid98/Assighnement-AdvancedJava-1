@@ -17,7 +17,6 @@ class NumericStreamsTest {
 	@Test
 	void generate() {
 		List<Integer> fib = NumericStreams.generate(10);
-
 		assertThat(fib, contains(1, 1, 2, 3, 5, 8, 13, 21, 34, 55));
 	}
 }

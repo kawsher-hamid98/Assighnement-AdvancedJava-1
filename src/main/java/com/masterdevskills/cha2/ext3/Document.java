@@ -13,12 +13,20 @@ import static java.util.stream.Collectors.collectingAndThen;
  * @author A N M Bazlur Rahman @bazlur_rahman
  * @since 07 August 2020
  */
-@Getter
+
 public class Document {
 	private final String title;
 	private final List<Page> pages;
 
-	public Document(String title, List<Page> pages) {
+    public String getTitle() {
+        return title;
+    }
+
+    public List<Page> getPages() {
+        return pages;
+    }
+
+    public Document(String title, List<Page> pages) {
 		this.title = title;
 		this.pages = List.copyOf(pages);
 	}
@@ -38,12 +46,14 @@ public class Document {
 						.collect(collectingAndThen(Collectors.toList(), this::copyWithPages));
 	}
 
-	@Getter
-	@Setter
 	public static class Page {
 		private final String content;
 
-		public Page(String content) {
+        public String getContent() {
+            return content;
+        }
+
+        public Page(String content) {
 			this.content = content;
 		}
 	}

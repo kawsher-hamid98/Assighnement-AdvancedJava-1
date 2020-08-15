@@ -22,6 +22,9 @@
 
 package com.masterdevskills.cha1.ext1;
 
+import java.time.Duration;
+import java.time.Instant;
+
 /**
  * @author A N M Bazlur Rahman @bazlur_rahman
  * @since 04 August 2020
@@ -35,13 +38,31 @@ public class LambdaExpression2 {
 	 * use this functional interface as argument of the following method and log
 	 * the time it takes to execute the method
 	 */
-	public void executionTime() {
-		//TODO add your code here;
+	public static void executionTime() {
+
 	}
 
 	/* TODO: use the above of method here
 	 */
-	public void run() {
-		//executionTime();
+	public static void run() {
+		Executable executable = () -> {
+			Instant startTime = Instant.now();
+			System.out.println(startTime);
+			executionTime();
+			Instant endTime = Instant.now();
+
+			System.out.println(Duration.between(startTime, endTime));
+		};
+		executable.execute();
 	}
+
+	public static void main(String[] args) {
+		run();
+	}
+}
+
+
+@FunctionalInterface
+interface Executable {
+	void execute();
 }
